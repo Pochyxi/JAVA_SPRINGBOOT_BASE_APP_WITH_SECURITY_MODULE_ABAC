@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "0f7317be-d191-4643-91af-5a84f9f3e57e",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21817474",
+		"_collection_link": "https://galactic-sunset-271548.postman.co/workspace/Gestione-Enti(trentino)~869e0a57-ac5c-46f6-826f-bf340f4675ac/collection/21817474-0f7317be-d191-4643-91af-5a84f9f3e57e?action=share&source=collection_link&creator=21817474"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"usernameOrEmail\": \"Adiener\",\n    \"password\": \"Admin94!\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"Developez\",\n    \"email\": \"adienerlopez@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"usernameOrEmail\": \"Developez\",\n    \"oldPassword\": \"AxcentSq2#\",\n    \"newPassword\": \"Admin94!\",\n    \"confirmPassword\": \"Admin94!\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/auth/change_password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"auth",
+						"change_password"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "28d9f5c5-fdfc-40cb-a3ca-56fb27ef2ecb",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recovery",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:{{port}}/api/auth/recovery_password?email=dario.corrado@axcent.it",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"auth",
+						"recovery_password"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "dario.corrado@axcent.it"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resendVerificationMail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adiToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/auth/resend_verification?userId=102",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"auth",
+						"resend_verification"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "102"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "changeEmail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{adiToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:{{port}}/api/auth/change_email?userId=107&email=dario.corrado@axcent.it",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"auth",
+						"change_email"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "107"
+						},
+						{
+							"key": "email",
+							"value": "dario.corrado@axcent.it"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
